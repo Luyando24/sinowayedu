@@ -56,6 +56,10 @@ class UniversityResource extends Resource
                     ->maxSize(1024)
                     ->imageEditor()
                     ->default(null),
+                Forms\Components\Toggle::make('is_recommended')
+                    ->label('Recommend on Homepage')
+                    ->helperText('Display this university in the recommended section on the homepage')
+                    ->default(false),
             ]);
     }
 
@@ -70,6 +74,9 @@ class UniversityResource extends Resource
                 Tables\Columns\TextColumn::make('photo')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\IconColumn::make('is_recommended')
+                    ->label('Recommended')
+                    ->boolean(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -78,6 +85,11 @@ class UniversityResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->filters([
+                Tables\Filters\Filter::make('is_recommended')
+                    ->label('Recommended Universities')
+                    ->query(fn ($query) => $query->where('is_recommended', true)),
             ]);
     }
 
@@ -95,3 +107,6 @@ class UniversityResource extends Resource
         ];
     }
 }
+
+
+

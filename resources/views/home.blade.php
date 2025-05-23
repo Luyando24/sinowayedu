@@ -7,7 +7,9 @@
 
 <x-universities :featuredUniversities="$featuredUniversities" />
 <x-about-section />
+<x-recommended-universities :recommendedUniversities="$recommendedUniversities" />
 <x-study-options :studyOptions="$studyOptions" />
+<x-recommended-programs :recommendedPrograms="$recommendedPrograms" />
 <x-featured-cities :cities="$cities" />
   
 @endsection

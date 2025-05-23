@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\programController;
 use App\Http\Controllers\ProgramDetailsController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UniversityDetails;
@@ -11,7 +15,6 @@ use App\Http\Controllers\UniversityDetailsController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\WhyController;
-use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CareerController;
@@ -50,8 +53,15 @@ Route::get('/payment-instructions', function() {
 // Routes that require subscription
 Route::middleware(['auth', \App\Http\Middleware\EnsureUserIsSubscribed::class])->group(function () {
     Route::get('/programs/{program}', [ProgramDetailsController::class, 'ProgramDetails'])->name('program');
+});
+
+// Routes that require university access permission
+Route::middleware(['auth', \App\Http\Middleware\EnsureUserCanAccessUniversity::class])->group(function () {
     Route::get('/university.details/{university}', [UniversityDetails::class, 'UniversityDetails'])->name('university');
 });
+
+// Programs index is accessible to everyone
+Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
 
 // Routes that require authentication but not subscription
 Route::middleware('auth')->group(function () {
@@ -103,6 +113,40 @@ Route::get('/debug-language', function () {
         'all_session_data' => session()->all()
     ];
 });
+
+// Authentication Routes (if you're using Laravel Fortify or custom auth)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', function () {
+        return view('auth.login');
+    })->name('login');
+    
+    Route::get('/register', function () {
+        return view('auth.register');
+    })->name('register');
+});
+
+// Custom Auth Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+});
+
+// Logout route
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
+
+
+
+
+
+
+
+
+
 
 
 

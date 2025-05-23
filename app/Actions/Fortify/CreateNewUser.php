@@ -5,11 +5,9 @@ namespace App\Actions\Fortify;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Laravel\Jetstream\Jetstream;
-//import homecontroller
-use App\Http\Controllers\HomeController;
-
+use Illuminate\Validation\Rule;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -22,37 +20,45 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        Validator::make($input, [
+        Log::info('Registration attempt', ['input' => array_except($input, ['password', 'password_confirmation'])]);
+        
+        $validator = Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
-            'partner_company' => ['required', 'string', 'max:255'],
+            'usertype' => ['required', 'string', 'in:normal,partner'],
+            'partner_company' => ['required_if:usertype,partner', 'nullable', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:20'],
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-        ])->validate();
-
-        return User::create([
+        ]);
+        
+        if ($validator->fails()) {
+            Log::warning('Registration validation failed', ['errors' => $validator->errors()->toArray()]);
+        }
+        
+        $validator->validate();
+        
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
+            'usertype' => $input['usertype'],
             'password' => Hash::make($input['password']),
-            'partner_company' => $input['partner_company'],
+            'partner_company' => $input['partner_company'] ?? null,
             'country' => $input['country'],
             'city' => $input['city'],
             'phone' => $input['phone'],
         ]);
+        
+        Log::info('User registered successfully', ['user_id' => $user->id, 'email' => $user->email]);
+        
+        return $user;
     }
-
-    // In your RegisterController or Fortify action
-// In your RegisterController or Fortify action
-public function store(Request $request)
-{
-    // Validate and create the user via Fortify's CreateNewUser action
-    $user = app(CreateNewUser::class)->create($request->all());
 }
 
 
-}
+
+
+
 
 

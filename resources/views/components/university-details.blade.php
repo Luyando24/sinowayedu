@@ -39,7 +39,6 @@
                     <thead class="table-light">
                         <tr>
                             <th>Program</th>
-                            <th class="d-none d-md-table-cell">Degree</th>
                             <th class="d-none d-md-table-cell">Language</th>
                             <th class="d-none d-lg-table-cell">Duration</th>
                             <th class="d-none d-lg-table-cell">Tuition Fee</th>
@@ -48,11 +47,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(auth()->check())
+                        @if(auth()->check() && auth()->user()->canAccessUniversityDetails())
                             @foreach($university->programs as $program)
                                 <tr>
                                     <td>{{ $program->name }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $program->degree->name ?? 'N/A' }}</td>
                                     <td class="d-none d-md-table-cell">{{ $program->language ?? 'N/A' }}</td>
                                     <td class="d-none d-lg-table-cell">{{ $program->duration ?? 'N/A' }}</td>
                                     <td class="d-none d-lg-table-cell">¥{{ number_format($program->tuition_fee) }}</td>
@@ -69,8 +67,13 @@
                         @else
                             <tr>
                                 <td colspan="7" class="text-center">
-                                    <p class="mb-2">Please <a href="{{ route('membership-application') }}">register</a> or <a href="{{ route('login') }}">login</a> to view available programs.</p>
-                                    <a href="{{ route('membership-application') }}" class="btn btn-primary btn-sm">Register Now</a>
+                                    <p class="mb-2">
+                                        @if(!auth()->check())
+                                            Please <a href="{{ route('register') }}">register</a> or <a href="{{ route('login') }}">login</a> as a partner to view university details.
+                                        @else
+                                            Normal users cannot access university details. Please contact us to upgrade your account to partner status.
+                                        @endif
+                                    </p>
                                 </td>
                             </tr>
                         @endif
@@ -80,3 +83,4 @@
         @endif
     </div>
 </section>
+

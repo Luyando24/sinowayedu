@@ -26,21 +26,26 @@ class ProgramController extends Controller
         // Get the total count for all programs matching the criteria
         $totalCount = $query->count();
         
-        // Apply pagination with different limits based on subscription status
-        if (!auth()->check() || !auth()->user()->subscribed()) {
-            // For non-subscribed users, limit to 5 programs total, regardless of page
-            $programs = $query->take(10)->get();
-            
-            // Create a custom paginator with only one page
-            $programs = new \Illuminate\Pagination\LengthAwarePaginator(
-                $programs,
-                $totalCount,
-                $totalCount, // Set per_page to total count to force single page
-                1, // Force page 1
-                ['path' => $request->url(), 'query' => $request->query()]
-            );
+        // Apply pagination with different limits based on user type and subscription status
+        if (auth()->check()) {
+            if (auth()->user()->usertype === 'normal' || auth()->user()->subscribed()) {
+                // For normal users or subscribed partner users, use normal pagination
+                $programs = $query->paginate(10);
+            } else {
+                // For non-subscribed partner users, limit to 10 programs
+                $programs = $query->take(10)->get();
+                
+                // Create a custom paginator with only one page
+                $programs = new \Illuminate\Pagination\LengthAwarePaginator(
+                    $programs,
+                    $totalCount,
+                    $totalCount, // Set per_page to total count to force single page
+                    1, // Force page 1
+                    ['path' => $request->url(), 'query' => $request->query()]
+                );
+            }
         } else {
-            // For subscribed users, use normal pagination
+            // For guests, show all programs with pagination
             $programs = $query->paginate(10);
         }
         
@@ -61,6 +66,7 @@ public function membershipNotice()
     }
 
 }
+
 
 
 

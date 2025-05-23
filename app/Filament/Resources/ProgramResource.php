@@ -128,6 +128,10 @@ class ProgramResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->default('active'),
+                Forms\Components\Toggle::make('is_recommended')
+                    ->label('Recommend on Homepage')
+                    ->helperText('Display this program in the recommended section on the homepage')
+                    ->default(false),
             ])->columns(3);
     }
 
@@ -178,9 +182,14 @@ class ProgramResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\IconColumn::make('is_recommended')
+                    ->label('Recommended')
+                    ->boolean(),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('is_recommended')
+                    ->label('Recommended Programs')
+                    ->query(fn ($query) => $query->where('is_recommended', true)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -208,3 +217,4 @@ class ProgramResource extends Resource
         ];
     }
 }
+

@@ -2,32 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'university_id',
         'name',
-        'program_id', // Consider renaming if it's meant to be something else — might be confusing
+        'university_id',
         'degree_id',
-        'scholarship_id',
-        'degree', // Optional: consider removing if it's redundant with degree_id relationship
+        'description',
         'language',
         'duration',
-        'intake',
         'tuition_fee',
-        'registration_fee',
-        'single_room_cost',
-        'double_room_cost',
-        'triple_room_cost',
-        'four_room_cost',
+        'scholarship',
+        'intake',
         'application_deadline',
-        'scholarship', // Optional: clarify this vs scholarship_id — could cause confusion
-        'description',
-        'requirements',
-        'application_documents',
-        'status',
+        'is_recommended',
+        // other fields...
     ];
 
     protected $casts = [
@@ -57,3 +51,4 @@ class Program extends Model
         return $this->hasMany(Scholarship::class);
     }
 }
+

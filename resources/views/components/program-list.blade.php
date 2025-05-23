@@ -49,13 +49,29 @@
     </form>
 
     {{-- Subscription Notice for Limited Results --}}
-    @if(!auth()->check() || !auth()->user()->subscribed())
+    @if(auth()->check() && auth()->user()->usertype === 'partner' && !auth()->user()->subscribed())
     <div class="alert alert-info mb-4" style="background-color: #3EA2A4; color: white; border: none;">
         <div class="d-flex align-items-center">
             <i class="fas fa-info-circle me-2"></i>
             <div>
                 <strong>Limited Access:</strong> You're viewing 10 out of {{ $programs->total() }} available programs. 
                 <a href="/payment-instructions" class="alert-link" style="color: #FFDD02;">Subscribe now</a> for full access.
+            </div>
+        </div>
+    </div>
+    @endif
+
+    {{-- University Access Notice for Normal Users --}}
+    @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+    <div class="alert alert-warning mb-4">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-info-circle me-2"></i>
+            <div>
+                <strong>Note:</strong> Normal users can view all programs but cannot access university details. 
+                @if(!auth()->check())
+                <a href="{{ route('register') }}" class="alert-link">Register</a> or 
+                <a href="{{ route('login') }}" class="alert-link">login</a> to continue.
+                @endif
             </div>
         </div>
     </div>
@@ -112,3 +128,4 @@
         @endif
     </div>
 </section>
+
