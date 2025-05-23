@@ -14,13 +14,13 @@
       </div>
       
       <div class="col-lg-4 mb-4 mb-lg-0">
-        <h5 class="mb-3">Quick Links</h5>
+        <h5 class="mb-3">{{ lang('quick_links') }}</h5>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="{{ url('/') }}" class="text-white text-decoration-none">Home</a></li>
-          <li class="mb-2"><a href="{{ url('universities') }}" class="text-white text-decoration-none">Universities</a></li>
-          <li class="mb-2"><a href="{{ url('programs') }}" class="text-white text-decoration-none">Programs</a></li>
-          <li class="mb-2"><a href="{{ url('about') }}" class="text-white text-decoration-none">About</a></li>
-          <li><a href="{{ url('contact') }}" class="text-white text-decoration-none">Contact</a></li>
+          <li class="mb-2"><a href="{{ url('/') }}" class="text-white text-decoration-none">{{ lang('home') }}</a></li>
+          <li class="mb-2"><a href="{{ url('universities') }}" class="text-white text-decoration-none">{{ lang('universities') }}</a></li>
+          <li class="mb-2"><a href="{{ url('programs') }}" class="text-white text-decoration-none">{{ lang('programs') }}</a></li>
+          <li class="mb-2"><a href="{{ url('about') }}" class="text-white text-decoration-none">{{ lang('about') }}</a></li>
+          <li><a href="{{ url('contact') }}" class="text-white text-decoration-none">{{ lang('contact') }}</a></li>
         </ul>
       </div>
       
@@ -50,4 +50,5 @@
     </div>
   </div>
 </footer>
+
 

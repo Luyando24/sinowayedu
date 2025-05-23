@@ -127,10 +127,11 @@ return [
 
     'aliases' => [],
 
-    'locale' => 'en',
+    'locale' => env('APP_LOCALE', 'en'),
     'fallback_locale' => 'en',
     'available_locales' => ['en', 'ru', 'fr'],
 
 ];
+
 
 

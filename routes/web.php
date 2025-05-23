@@ -24,6 +24,7 @@ use App\Models\City;
 // Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Language switcher route
 Route::get('lang/{lang}', [App\Http\Controllers\LanguageController::class, 'switchLang'])->name('language.switch');
 
 Route::get('/membership-notice', [ProgramController::class, 'membershipNotice'])->name('membership-notice');
@@ -92,6 +93,19 @@ Route::get('/careers', [CareerController::class, 'careerPage'])->name('careers')
 Route::get('/career/{career}', [CareerController::class, 'careerDetails'])->name('job.show');
 //submit job application
 Route::post('/job/{career:slug}/apply', [JobApplicationController::class, 'store'])->name('job.apply');
+
+// Debug route to check language settings
+Route::get('/debug-language', function () {
+    return [
+        'session_locale' => session('locale'),
+        'app_locale' => app()->getLocale(),
+        'config_locale' => config('app.locale'),
+        'all_session_data' => session()->all()
+    ];
+});
+
+
+
 
 
 

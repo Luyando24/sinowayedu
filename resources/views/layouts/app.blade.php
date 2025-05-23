@@ -1,19 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Sinoway Edu')</title>
 
     <!-- Local Bootstrap CSS -->
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-
-
-
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    
+    <!-- Flag Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 
     <!-- Optional: Google Fonts -->
     <link href="https://fonts.loli.net/css2?family=Roboto&display=swap" rel="stylesheet">
-
     
     <!-- Your custom CSS (optional) -->
     @vite('resources/css/app.css')
@@ -37,3 +36,5 @@
     
 </body>
 </html>
+
+

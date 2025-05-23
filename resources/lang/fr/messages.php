@@ -13,32 +13,36 @@ return [
     'login' => 'Connexion',
     'register' => 'Inscription',
     'logout' => 'Déconnexion',
-    'cities' => 'Villes',
     'dashboard' => 'Tableau de Bord',
     'profile' => 'Profil',
     'settings' => 'Paramètres',
-    'admin' => 'Administrateur',
-    
-    // Authentication
-    'login' => 'Connexion',
-    'register' => 'S\'inscrire',
-    'profile' => 'Profil',
-    'admin_dashboard' => 'Tableau de Bord Admin',
-    'logout' => 'Déconnexion',
-    
-    // About page
-    'our_mission' => 'Notre Mission',
-    'mission_description' => 'Notre mission est de fournir des opportunités éducatives accessibles et des conseils aux étudiants internationaux, les aidant à naviguer facilement dans leur parcours d\'études à l\'étranger.',
-    'message_from_founder' => 'Message De Notre Fondateur',
-    
-    // Common
+    'cities' => 'Villes',
     'all_programs' => 'Tous les Programmes',
+    
+    // Hero section
+    'hero_title' => 'Votre partenaire de confiance pour étudier en Chine',
+    'hero_subtitle' => 'De la candidature à l\'arrivée, votre passerelle vers les meilleures universités.',
+    'select_city' => 'Sélectionner une ville',
+    'select_degree' => 'Sélectionner un diplôme',
+    'select_language' => 'Sélectionner une langue',
+    'select_duration' => 'Sélectionner une durée',
+    'select_scholarship' => 'Sélectionner une bourse',
+    'search_programs' => 'Rechercher des programmes',
+    'select_intake' => 'Sélectionner une rentrée',
+    
+    // Search form
+    'search_placeholder' => 'Rechercher des programmes, universités...',
+    'search_button' => 'Rechercher',
+    'advanced_search' => 'Recherche Avancée',
+    
+    // Language names
+    'language' => 'Langue',
+    'english' => 'Anglais',
+    'russian' => 'Russe',
+    'french' => 'Français',
+    
+    // Common elements
     'search' => 'Rechercher',
-    'select_city' => 'Sélectionner une Ville',
-    'select_degree' => 'Sélectionner un Diplôme',
-    'select_language' => 'Sélectionner une Langue',
-    'select_duration' => 'Sélectionner une Durée',
-    'select_scholarship' => 'Sélectionner une Bourse',
     'apply' => 'Postuler',
     'submit' => 'Soumettre',
     'cancel' => 'Annuler',
@@ -47,176 +51,21 @@ return [
     'delete' => 'Supprimer',
     'view' => 'Voir',
     'details' => 'Détails',
-    'more' => 'Plus',
-    'back' => 'Retour',
-    'next' => 'Suivant',
-    'previous' => 'Précédent',
-    
-    // Language selector
-    'language' => 'Langue',
-    'english' => 'Anglais',
-    'russian' => 'Russe',
-    'french' => 'Français',
-    'en' => 'Anglais',
-    'ru' => 'Russe',
-    'fr' => 'Français',
     
     // Footer
-    'footer_description' => 'SinoWay Education est votre partenaire de confiance pour étudier en Chine. Nous connectons les étudiants internationaux avec les meilleures universités chinoises et fournissons un soutien complet tout au long de votre parcours académique.',
-    'quick_links' => 'Liens Rapides',
-    'newsletter' => 'Bulletin d\'information',
-    'newsletter_description' => 'Abonnez-vous à notre newsletter pour recevoir les dernières nouvelles et mises à jour.',
-    'subscribe' => 'S\'abonner',
-    'copyright' => 'Droits d\'auteur',
+    'copyright' => 'Droit d\'auteur',
     'all_rights_reserved' => 'Tous droits réservés',
     'privacy_policy' => 'Politique de Confidentialité',
-    'terms_of_service' => 'Conditions d\'utilisation',
-    
-    // Programs
-    'program_details' => 'Détails du Programme',
-    'program_name' => 'Nom du Programme',
-    'program_description' => 'Description du Programme',
-    'program_requirements' => 'Exigences du Programme',
-    'tuition_fee' => 'Frais de Scolarité',
-    'registration_fee' => 'Frais d\'Inscription',
-    'accommodation' => 'Hébergement',
-    'single_room' => 'Chambre Simple',
-    'double_room' => 'Chambre Double',
-    'triple_room' => 'Chambre Triple',
-    'four_bed_room' => 'Chambre à Quatre Lits',
-    'application_deadline' => 'Date Limite de Candidature',
-    'scholarship_options' => 'Options de Bourses',
-    'language_of_instruction' => 'Langue d\'Enseignement',
-    'duration' => 'Durée',
-    'intake' => 'Admission',
-    'application_documents' => 'Documents de Candidature',
-    'select_university' => 'Sélectionner une Université',
-    'university' => 'Université',
-    'degree' => 'Diplôme',
-    'chinese' => 'Chinois',
-    
-    // Universities
-    'university_details' => 'Détails de l\'Université',
-    'university_name' => 'Nom de l\'Université',
-    'university_description' => 'Description de l\'Université',
-    'university_type' => 'Type d\'Université',
-    'university_ranking' => 'Classement de l\'Université',
-    'location' => 'Emplacement',
-    'facilities' => 'Installations',
-    'student_life' => 'Vie Étudiante',
-    'campus' => 'Campus',
-    'view_details' => 'Voir les Détails',
-    'limited_results_message' => 'Vous consultez des résultats limités. Passez à la version premium pour voir toutes les universités et tous les programmes.',
-    'upgrade_to_premium' => 'Passer à Premium',
-    
-    // Cities
-    'city_details' => 'Détails de la Ville',
-    'city_name' => 'Nom de la Ville',
-    'city_description' => 'Description de la Ville',
-    'population' => 'Population',
-    'climate' => 'Climat',
-    'transportation' => 'Transport',
-    'cost_of_living' => 'Coût de la Vie',
-    
-    // Careers
-    'career_opportunities' => 'Opportunités de Carrière en Chine',
-    'careers_subtitle' => 'Trouvez l\'emploi de vos rêves après l\'obtention de votre diplôme et passez en douceur du visa étudiant au permis de travail',
-    'job_title' => 'Titre du Poste',
-    'category' => 'Catégorie',
-    'all_categories' => 'Toutes les Catégories',
-    'education' => 'Éducation',
-    'it' => 'Informatique',
-    'marketing' => 'Marketing',
-    'administration' => 'Administration',
-    'location' => 'Emplacement',
-    'search_jobs' => 'Rechercher des Emplois',
-    'deadline' => 'Date Limite',
-    'job_description' => 'Description du Poste',
-    'job_requirements' => 'Exigences du Poste',
-    'company' => 'Entreprise',
-    'salary_range' => 'Fourchette de Salaire',
-    'job_type' => 'Type d\'Emploi',
-    'job_location' => 'Lieu de Travail',
-    'apply_now' => 'Postuler Maintenant',
-    'application_form' => 'Formulaire de Candidature',
-    'upload_resume' => 'Télécharger CV',
-    'upload_cover_letter' => 'Télécharger Lettre de Motivation',
-    
-    // User
-    'name' => 'Nom',
-    'email' => 'Email',
-    'password' => 'Mot de Passe',
-    'confirm_password' => 'Confirmer le Mot de Passe',
-    'remember_me' => 'Se Souvenir de Moi',
-    'forgot_password' => 'Mot de Passe Oublié',
-    'reset_password' => 'Réinitialiser le Mot de Passe',
-    'phone' => 'Téléphone',
-    'address' => 'Adresse',
-    'country' => 'Pays',
-    'city' => 'Ville',
-    'postal_code' => 'Code Postal',
-    'date_of_birth' => 'Date de Naissance',
-    'gender' => 'Genre',
-    'male' => 'Masculin',
-    'female' => 'Féminin',
-    'other' => 'Autre',
-    
-    // Forms
-    'required' => 'Obligatoire',
-    'optional' => 'Facultatif',
-    'please_select' => 'Veuillez Sélectionner',
-    'please_enter' => 'Veuillez Entrer',
-    'invalid_input' => 'Entrée Invalide',
-    'success' => 'Succès',
-    'error' => 'Erreur',
-    'warning' => 'Avertissement',
-    'info' => 'Information',
-    
-    // Time
-    'today' => 'Aujourd\'hui',
-    'yesterday' => 'Hier',
-    'tomorrow' => 'Demain',
-    'day' => 'Jour',
-    'week' => 'Semaine',
-    'month' => 'Mois',
-    'year' => 'Année',
-    'date' => 'Date',
-    'time' => 'Heure',
-    'datetime' => 'Date et Heure',
-    
-    // Misc
-    'yes' => 'Oui',
-    'no' => 'Non',
-    'ok' => 'OK',
-    'loading' => 'Chargement',
-    'welcome' => 'Bienvenue',
-    'hello' => 'Bonjour',
-    'goodbye' => 'Au revoir',
-    'thank_you' => 'Merci',
-    'sorry' => 'Désolé',
-    'congratulations' => 'Félicitations',
-    'oops' => 'Oups',
-    'error_occurred' => 'Une erreur s\'est produite',
-    'try_again' => 'Réessayer',
-    'not_found' => 'Non Trouvé',
-    'page_not_found' => 'Page Non Trouvée',
-    'access_denied' => 'Accès Refusé',
-    'unauthorized' => 'Non Autorisé',
-    'forbidden' => 'Interdit',
-    
-    // Contact
-    'get_in_touch' => 'Contactez-Nous',
-    'address' => 'Adresse',
-    'phone' => 'Téléphone',
-    'email' => 'Email',
-    'working_hours' => 'Heures d\'Ouverture',
-    'monday_to_friday' => 'Lundi à Vendredi',
-    'send_us_a_message' => 'Envoyez-Nous un Message',
-    'name' => 'Nom',
-    'subject' => 'Sujet',
-    'message' => 'Message',
-    'send_message' => 'Envoyer le Message',
+    'terms_of_service' => 'Conditions d\'Utilisation',
+    'quick_links' => 'Liens Rapides',
 ];
+
+
+
+
+
+
+
 
 
 

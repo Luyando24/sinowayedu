@@ -9,19 +9,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
+          <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">{{ lang('home') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('universities*') ? 'active' : '' }}" href="{{ url('universities') }}">Universities</a>
+          <a class="nav-link {{ request()->is('universities*') ? 'active' : '' }}" href="{{ url('universities') }}">{{ lang('universities') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('programs*') ? 'active' : '' }}" href="{{ url('programs') }}">Programs</a>
+          <a class="nav-link {{ request()->is('programs*') ? 'active' : '' }}" href="{{ url('programs') }}">{{ lang('programs') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('about*') ? 'active' : '' }}" href="{{ url('about') }}">About Us</a>
+          <a class="nav-link {{ request()->is('about*') ? 'active' : '' }}" href="{{ url('about') }}">{{ lang('about') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('contact*') ? 'active' : '' }}" href="{{ url('contact') }}">Contact</a>
+          <a class="nav-link {{ request()->is('contact*') ? 'active' : '' }}" href="{{ url('contact') }}">{{ lang('contact') }}</a>
         </li>
       </ul>
       
@@ -32,21 +32,21 @@
       
       <!-- Authentication Links -->
       @guest
-        <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Login</a>
-        <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+        <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">{{ lang('login') }}</a>
+        <a href="{{ route('register') }}" class="btn btn-primary">{{ lang('register') }}</a>
       @else
         <div class="dropdown">
           <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             {{ Auth::user()->name }}
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a></li>
-            <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
+            <li><a class="dropdown-item" href="{{ url('dashboard') }}">{{ lang('dashboard') }}</a></li>
+            <li><a class="dropdown-item" href="{{ url('profile') }}">{{ lang('profile') }}</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="dropdown-item">Logout</button>
+                <button type="submit" class="dropdown-item">{{ lang('logout') }}</button>
               </form>
             </li>
           </ul>
@@ -55,3 +55,5 @@
     </div>
   </div>
 </nav>
+
+

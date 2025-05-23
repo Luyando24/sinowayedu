@@ -12,34 +12,34 @@
       <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{url('/')}}">{{ lang('home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/why-us')}}">Why Us</a>
+            <a class="nav-link" href="{{url('/why-us')}}">{{ lang('why_us') }}</a>
           </li>
           @if(auth()->check())
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/programs')}}">Programs</a>
+            <a class="nav-link" href="{{url('/programs')}}">{{ lang('programs') }}</a>
           </li>
           @else
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/register')}}">Programs</a>
+            <a class="nav-link" href="{{url('/register')}}">{{ lang('programs') }}</a>
           </li>
           @endif
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/universities')}}">Universities</a>
+            <a class="nav-link" href="{{url('/universities')}}">{{ lang('universities') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/careers')}}">Career Opportunities</a>
+            <a class="nav-link" href="{{url('/careers')}}">{{ lang('careers') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/news')}}">News</a>
+            <a class="nav-link" href="{{url('/news')}}">{{ lang('news') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('about')}}">About Us</a>
+            <a class="nav-link" href="{{url('about')}}">{{ lang('about') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('contact-us')}}">Contact</a>
+            <a class="nav-link" href="{{url('contact-us')}}">{{ lang('contact') }}</a>
           </li>
         </ul>
       </div>
@@ -47,11 +47,11 @@
       <!-- Right-end Button -->
       <div class="d-none d-lg-flex">
         @guest
-            <a href="{{ url('login') }}" class="btn primary-button">Login / Register</a>
+            <a href="{{ url('login') }}" class="btn primary-button">{{ lang('login') }} / {{ lang('register') }}</a>
         @else
-            <a href="{{ url('programs') }}" class="btn primary-button">All Programs</a>
+            <a href="{{ url('programs') }}" class="btn primary-button">{{ lang('all_programs') }}</a>
         @endguest
-    </div>
+      </div>
     
     
     
@@ -60,4 +60,6 @@
   </nav>
 </header>
 <!-- Bootstrap Bundle (includes Popper for dropdowns) -->
+
+
 
