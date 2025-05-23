@@ -23,15 +23,15 @@ class ProgramsImport implements ToModel, WithHeadingRow, WithValidation
         // Find or create related models
         $university = University::where('name', $row['university_name'])->first();
         $degree = Degree::where('name', $row['degree'])->first();
-        $scholarship = null;
-        
-        if (isset($row['scholarship']) && !empty($row['scholarship'])) {
-            $scholarship = Scholarship::where('name', $row['scholarship'])->first();
-        }
         
         // Parse requirements and application documents if they exist
-        $requirements = isset($row['requirements']) ? explode(',', $row['requirements']) : [];
-        $applicationDocuments = isset($row['application_documents']) ? explode(',', $row['application_documents']) : [];
+        $requirements = isset($row['requirements']) ? 
+            json_encode(array_map('trim', explode(',', $row['requirements']))) : 
+            json_encode([]);
+        
+        $applicationDocuments = isset($row['application_documents']) ? 
+            json_encode(array_map('trim', explode(',', $row['application_documents']))) : 
+            json_encode([]);
         
         // Parse application deadline
         $applicationDeadline = null;
@@ -42,7 +42,7 @@ class ProgramsImport implements ToModel, WithHeadingRow, WithValidation
                 // If parsing fails, leave as null
             }
         }
-
+    
         // Only proceed if we found a university and degree
         if ($university && $degree) {
             return new Program([
@@ -60,7 +60,7 @@ class ProgramsImport implements ToModel, WithHeadingRow, WithValidation
                 'triple_room_cost' => $row['triple_room_cost'] ?? null,
                 'four_room_cost' => $row['four_room_cost'] ?? null,
                 'application_deadline' => $applicationDeadline,
-                'scholarship_id' => $scholarship ? $scholarship->id : null,
+                'scholarship' => $row['scholarship'] ?? null,
                 'requirements' => $requirements,
                 'application_documents' => $applicationDocuments,
                 'status' => $row['status'] ?? 'active',

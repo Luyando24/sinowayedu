@@ -13,15 +13,23 @@ class Program extends Model
         'name',
         'university_id',
         'degree_id',
+        'program_id',
         'description',
         'language',
         'duration',
         'tuition_fee',
-        'scholarship',
+        'registration_fee',
+        'single_room_cost',
+        'double_room_cost',
+        'triple_room_cost',
+        'four_room_cost',
         'intake',
         'application_deadline',
-        'is_recommended',
-        // other fields...
+        'scholarship',
+        'requirements',
+        'application_documents',
+        'status',
+        'is_recommended'
     ];
 
     protected $casts = [
