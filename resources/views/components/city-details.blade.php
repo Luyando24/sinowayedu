@@ -44,7 +44,13 @@
                     <tbody>
                         @foreach($city->universities as $university)
                             <tr>
-                                <td>{{ $university->name }}</td>
+                                <td>
+                                    @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                                        University #{{ $loop->iteration }}
+                                    @else
+                                        {{ $university->name }}
+                                    @endif
+                                </td>
                                 <td class="d-none d-md-table-cell">{{ $university->qs_rank ?? 'N/A' }}</td>
                                 <td class="d-none d-md-table-cell">{{ $university->city->province->name ?? 'N/A' }}</td>
                                 <td>
@@ -60,3 +66,4 @@
         @endif
     </div>
 </section>
+

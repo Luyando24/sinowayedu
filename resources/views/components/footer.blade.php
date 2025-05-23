@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-4 mb-md-0">
-                <h5 class="mb-4">{{ lang('about_us') }}</h5>
-                <p class="mb-4">{{ lang('footer_about') }}</p>
+                <h5 class="mb-4">{{ __('messages.about_us') }}</h5>
+                <p class="mb-4">{{ __('messages.footer_about') }}</p>
                 <div class="social-icons d-flex flex-wrap gap-3 mt-3">
                     <a href="https://www.facebook.com/share/12KBok9k5Hr/" target="_blank" class="text-white social-icon">
                         <i class="fab fa-facebook-f"></i>
@@ -20,17 +20,17 @@
                 </div>
             </div>
             <div class="col-md-4 mb-4 mb-md-0">
-                <h5 class="mb-4">{{ lang('quick_links') }}</h5>
+                <h5 class="mb-4">{{ __('messages.quick_links') }}</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="{{ url('about-us') }}" class="text-white text-decoration-none">{{ lang('about_us') }}</a></li>
-                    <li class="mb-2"><a href="{{ url('programs') }}" class="text-white text-decoration-none">{{ lang('programs') }}</a></li>
-                    <li class="mb-2"><a href="{{ url('universities') }}" class="text-white text-decoration-none">{{ lang('universities') }}</a></li>
-                    <li class="mb-2"><a href="{{ url('contact') }}" class="text-white text-decoration-none">{{ lang('contact') }}</a></li>
+                    <li class="mb-2"><a href="{{ url('about-us') }}" class="text-white text-decoration-none">{{ __('messages.about_us') }}</a></li>
+                    <li class="mb-2"><a href="{{ url('programs') }}" class="text-white text-decoration-none">{{ __('messages.programs') }}</a></li>
+                    <li class="mb-2"><a href="{{ url('universities') }}" class="text-white text-decoration-none">{{ __('messages.universities') }}</a></li>
+                    <li class="mb-2"><a href="{{ url('contact') }}" class="text-white text-decoration-none">{{ __('messages.contact') }}</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
-                <h5 class="mb-4">{{ lang('contact_us') }}</h5>
-                <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> {{ lang('address') }}</p>
+                <h5 class="mb-4">{{ __('messages.contact_us') }}</h5>
+                <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> {{ __('messages.address') }}</p>
                 <p class="mb-2"><i class="fas fa-phone me-2"></i> +86 13601965441</p>
                 <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@sinowayedu.com</p>
             </div>
@@ -38,18 +38,18 @@
         <hr class="my-4 bg-secondary">
         <div class="row">
             <div class="col-md-6 mb-3 mb-md-0">
-                <p class="mb-0">&copy; {{ date('Y') }} SinoWay Education. {{ lang('all_rights_reserved') }}</p>
+                <p class="mb-0">&copy; {{ date('Y') }} SinoWay Education. {{ __('messages.all_rights_reserved') }}</p>
             </div>
             <div class="col-md-6 text-md-end">
-                <a href="{{ url('privacy-policy') }}" class="text-white text-decoration-none me-3">{{ lang('privacy_policy') }}</a>
-                <a href="{{ url('terms-of-service') }}" class="text-white text-decoration-none">{{ lang('terms_of_service') }}</a>
+                <a href="{{ url('privacy-policy') }}" class="text-white text-decoration-none me-3">{{ __('messages.privacy_policy') }}</a>
+                <a href="{{ url('terms-of-service') }}" class="text-white text-decoration-none">{{ __('messages.terms_of_service') }}</a>
             </div>
         </div>
     </div>
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/8613601965441" class="whatsapp-float" target="_blank">
+<a href="https://wa.me/8613601965441" class="whatsapp-float text-decoration-none" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -64,6 +64,7 @@
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    text-decoration: none !important;
 }
 
 .social-icon:hover {
@@ -90,6 +91,7 @@
     justify-content: center;
     animation: pulse 2s infinite;
     transition: all 0.3s ease;
+    text-decoration: none !important;
 }
 
 .whatsapp-float:hover {
@@ -136,4 +138,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
 

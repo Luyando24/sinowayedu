@@ -49,14 +49,29 @@ class User extends Authenticatable
     ];
     
     /**
-     * Check if user is subscribed
+     * Check if the user can access university details
+     * 
+     * @return bool
+     */
+    public function canAccessUniversityDetails()
+    {
+        // Only partner users can access university details
+        return $this->usertype === 'partner';
+    }
+
+    /**
+     * Check if the user is subscribed
+     * 
+     * @return bool
      */
     public function subscribed()
     {
-        // Implement your subscription logic here
-        return false;
+        // Check if the user has an active subscription
+        // This is a simplified version - you might need to adjust based on your subscription logic
+        return $this->subscription_status === 'active';
     }
 }
+
 
 
 

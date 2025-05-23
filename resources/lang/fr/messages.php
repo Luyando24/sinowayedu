@@ -58,7 +58,14 @@ return [
     'privacy_policy' => 'Politique de Confidentialité',
     'terms_of_service' => 'Conditions d\'Utilisation',
     'quick_links' => 'Liens Rapides',
+    'about_us' => 'À Propos de Nous',
+    'contact_us' => 'Contactez-Nous',
+    'footer_about' => 'SinoWay Education est votre partenaire de confiance pour étudier en Chine. Nous fournissons des services complets pour aider les étudiants internationaux à atteindre leurs objectifs académiques en Chine.',
+    'address' => 'Pékin, Chine',
+    'account' => 'Compte',
 ];
+
+
 
 
 

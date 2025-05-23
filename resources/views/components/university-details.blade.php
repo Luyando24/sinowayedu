@@ -5,7 +5,13 @@
             <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
                 <img src="{{ asset('storage/' . $university->photo) }}" class="w-100" style="height: 300px; object-fit: cover;" alt="{{ $university->name }} image">
                 <div class="card-body bg-white">
-                    <h2 class="mb-2">{{ $university->name }}</h2>
+                    <h2 class="mb-2">
+                        @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                            University in {{ $university->city->name }}
+                        @else
+                            {{ $university->name }}
+                        @endif
+                    </h2>
                     <div class="row">
                         <div class="col-md-4 mb-2">
                             <strong>QS Rank:</strong> {{ $university->qs_rank ?? 'N/A' }}
@@ -18,7 +24,13 @@
                         </div>
                     </div>
                     @if($university->description)
-                        <p class="mt-3 text-muted">{{ strip_tags($university->description) }}</p>
+                        <p class="mt-3 text-muted">
+                            @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                                This university offers various programs for international students.
+                            @else
+                                {{ strip_tags($university->description) }}
+                            @endif
+                        </p>
                     @endif
                 </div>
             </div>
@@ -27,7 +39,13 @@
 
     {{-- Programs Offered --}}
     <div class="mb-4">
-        <h3 class="mb-3">Programs Offered at {{ $university->name }}</h3>
+        <h3 class="mb-3">
+            @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                Programs Offered at this University
+            @else
+                Programs Offered at {{ $university->name }}
+            @endif
+        </h3>
 
         @if($university->programs->isEmpty())
             <div class="alert alert-info">
@@ -83,4 +101,5 @@
         @endif
     </div>
 </section>
+
 

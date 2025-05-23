@@ -58,7 +58,13 @@ return [
     'privacy_policy' => 'Privacy Policy',
     'terms_of_service' => 'Terms of Service',
     'quick_links' => 'Quick Links',
+    'about_us' => 'About Us',
+    'contact_us' => 'Contact Us',
+    'footer_about' => 'SinoWay Education is your trusted partner for studying in China. We provide comprehensive services to help international students achieve their academic goals in China.',
+    'address' => 'Beijing, China',
+    'account' => 'Account',
 ];
+
 
 
 

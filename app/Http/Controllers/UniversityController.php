@@ -23,8 +23,12 @@ class UniversityController extends Controller
             $query->where('city_id', $request->city_id);
         }
 
-        // Limit results for non-subscribed partner users
-        if (auth()->check() && auth()->user()->usertype === 'partner' && !auth()->user()->subscribed()) {
+        // Limit results based on user type
+        if (!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal')) {
+            // For guests and normal users, limit to 8 universities
+            $query->limit(8);
+        } else if (auth()->check() && auth()->user()->usertype === 'partner' && !auth()->user()->subscribed()) {
+            // For non-subscribed partner users, limit to 10
             $query->limit(10);
         }
 
@@ -36,6 +40,8 @@ class UniversityController extends Controller
         ]);
     }
 }
+
+
 
 
 
