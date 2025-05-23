@@ -1,9 +1,8 @@
 <!-- Top Bar -->
-<div class="bg-dark text-white py-2">
-  <div class="container d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center">
-
+<div class="top-bar bg-dark text-white py-2">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
     <!-- Left + Center Links (merge for inline layout) -->
-    <div class="d-flex flex-wrap flex-md-nowrap gap-3 align-items-center">
+    <div class="d-none d-md-flex flex-wrap flex-md-nowrap gap-3 align-items-center">
       <a href="{{url('why-us')}}" class="text-white text-decoration-none small">{{ lang('why_us') }}</a>
       <a href="{{url('cities')}}" class="text-white text-decoration-none small">{{ lang('cities') }}</a>
       <a href="{{url('careers')}}" class="text-white text-decoration-none small">{{ lang('careers') }}</a>
@@ -15,7 +14,7 @@
     </div>
 
     <!-- Right: Language Switcher + Email + Logout -->
-    <div class="d-flex align-items-center gap-3 text-end mt-2 mt-md-0 ms-auto">
+    <div class="d-flex align-items-center gap-3 text-end ms-auto">
       <!-- Language Switcher -->
       <div class="text-white">
         <x-language-switcher />
@@ -30,9 +29,9 @@
         </form>
       @endauth
     </div>
-
   </div>
 </div>
+
 
 
 
