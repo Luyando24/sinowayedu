@@ -3,26 +3,22 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProgramResource\Pages;
-use App\Filament\Resources\ProgramResource\RelationManagers;
 use App\Models\Program;
 use Filament\Forms;
 use Filament\Forms\Form;
-use App\Models\University;
-use App\Models\Scholarship;
-use App\Models\Degree;
-use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ProgramsImport;
 
 class ProgramResource extends Resource
 {
     protected static ?string $model = Program::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-book-open';
-    protected static ?string $navigationGroup = 'University Information';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'Education Management';
     protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
@@ -90,35 +86,32 @@ class ProgramResource extends Resource
                     ->relationship('scholarship', 'name')
                     ->preload()
                     ->default(null),
-                    Forms\Components\Select::make('requirements')
+                Forms\Components\Select::make('requirements')
                     ->options([
-                        'non_chinese_nationality' => 'Non-Chinese nationality',
-                        'healthy' => 'Physically and mentally healthy, without any crime record',
-                        'hsk5' => 'HSK5 or above for Chinese-taught programs',
-                        'english_proficiency' => 'IELTS 6.0 / TOEFL 85 / Duolingo 105 or above for English-taught programs',
-                        'bachelor_age' => 'Bachelor’s applicants: High school graduates aged 18-26 with a minimum academic score of 75%',
+                        'high_school_diploma' => 'High School Diploma',
+                        'bachelor_degree' => 'Bachelor\'s Degree',
+                        'master_degree' => 'Master\'s Degree',
+                        'language_proficiency' => 'Language Proficiency',
+                        'recommendation_letters' => 'Recommendation Letters',
+                        'work_experience' => 'Work Experience',
+                        'portfolio' => 'Portfolio',
+                        'interview' => 'Interview',
+                        'entrance_exam' => 'Entrance Exam',
                     ])
                     ->multiple()
                     ->searchable()
                     ->required()
                     ->label('Applicant Requirements'),
-                    Forms\Components\Select::make('application_documents')
+                Forms\Components\Select::make('application_documents')
                     ->options([
                         'application_form' => 'Application Form',
-        'digital_photo' => 'Digital Photo',
-        'notarized_diploma_transcript' => 'Scan of the notarized translation of highest diploma and transcript',
-        'passport_visa' => 'Photocopy of passport and Chinese visa pages',
-        'language_proficiency' => 'Language Proficiency Certificate',
-        'personal_resume' => 'Personal Resume',
-        'study_plan' => 'Study plan (written in the teaching language, 800+ words for Master’s, 1000+ words for Doctoral programs)',
-        'recommendation_letters' => 'Two Recommendation Letters from professors/associate professors (Chinese or English)',
-        'physical_exam' => 'Foreigner Physical Examination Form (within 6 months, covering all required items)',
-        'non_criminal_record' => 'Certificate of Non-Criminal Records (valid within 6 months before application)',
-        'bank_saving' => 'Certificate of Bank Saving or Income Certificate of Financial Guarantor',
-        'other_attachments' => 'Other attachments (e.g., Certificate of award)',
-        'bank_deposit' => 'Bank deposit certificate covering at least one academic year’s tuition fees',
-        'proof_of_enrollment' => 'Proof of enrollment or transfer certificate (if currently a student)',
-        'work_experience' => 'Proof of employment (for applicants with work experience)',
+                        'digital_photo' => 'Digital Photo',
+                        'notarized_diploma_transcript' => 'Scan of the notarized translation of highest diploma and transcript',
+                        'passport_visa' => 'Photocopy of passport and Chinese visa pages',
+                        'language_proficiency' => 'Language Proficiency Certificate',
+                        'personal_resume' => 'Personal Resume',
+                        'study_plan' => 'Study plan (written in the teaching language, 800+ words for Master\'s, 1000+ words for Doctoral programs)',
+                        'recommendation_letters' => 'Two Recommendation Letters from professors/associate professors (Chinese or English)',
                     ])
                     ->multiple()
                     ->searchable()
@@ -217,4 +210,5 @@ class ProgramResource extends Resource
         ];
     }
 }
+
 
