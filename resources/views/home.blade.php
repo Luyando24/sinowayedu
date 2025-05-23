@@ -5,11 +5,10 @@
 @section('content')
 <x-hero :heroes="$heroes" :degrees="$degrees" :cities="$cities" />
 
-<x-universities :featuredUniversities="$featuredUniversities" />
-<x-about-section />
 <x-recommended-universities :recommendedUniversities="$recommendedUniversities" />
-<x-study-options :studyOptions="$studyOptions" />
+<x-about-section />
 <x-recommended-programs :recommendedPrograms="$recommendedPrograms" />
+<x-study-options :studyOptions="$studyOptions" />
 <x-featured-cities :cities="$cities" />
   
 @endsection

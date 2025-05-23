@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
                         <img src="{{ asset('storage/' . $university->photo) }}" class="card-img-top" alt="{{ $university->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $university->name }}</h5>
-                            <p class="card-text">{{ Str::limit(strip_tags($university->description), 100) }}</p>
+                            <p class="card-text d-none d-md-block">{{ Str::limit(strip_tags($university->description), 100) }}</p>
                         </div>
                     </div>
                 </a>
@@ -23,3 +23,4 @@ use Illuminate\Support\Str;
         @endforeach
     </div>
 </section>
+

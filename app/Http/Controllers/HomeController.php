@@ -17,18 +17,18 @@ class HomeController extends Controller
         $heroes = Hero::all();
         $featuredUniversities = University::with('city')->take(6)->get();
         $degrees = Degree::all();
-        $cities = City::all();
+        $cities = City::orderBy('name')->take(3)->get();
         $studyOptions = Program::all();
         
         // Get recommended universities and programs
         $recommendedUniversities = University::with('city')
             ->where('is_recommended', true)
-            ->take(6)
+            ->take(8)
             ->get();
             
         $recommendedPrograms = Program::with(['university', 'degree'])
             ->where('is_recommended', true)
-            ->take(6)
+            ->take(8)
             ->get();
 
         return view('home', compact(

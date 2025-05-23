@@ -112,6 +112,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\Filament\AdminPanelProvider::class,
+        App\Providers\FilamentServiceProvider::class,
     ],
 
     /*
@@ -132,6 +134,7 @@ return [
     'available_locales' => ['en', 'ru', 'fr'],
 
 ];
+
 
 
 

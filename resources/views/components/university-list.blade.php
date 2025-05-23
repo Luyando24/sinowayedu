@@ -46,7 +46,7 @@
                             <p class="mb-1 text-muted">
                                 <strong>QS Rank:</strong> {{ $university->qs_rank ?? 'N/A' }}
                             </p>
-                            <p class="mb-0 text-muted">
+                            <p class="mb-0 text-muted d-none d-md-block">
                                 <strong>City:</strong> {{ $university->city->name ?? 'N/A' }}
                             </p>
                         </div>

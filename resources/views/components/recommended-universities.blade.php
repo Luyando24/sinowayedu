@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
                 No recommended universities available at the moment.
             </div>
         @else
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-4">
                 @foreach($recommendedUniversities as $university)
                     <div class="col">
                         <a href="{{ url('university.details', $university->id) }}" class="text-decoration-none text-dark">
@@ -30,13 +30,13 @@ use Illuminate\Support\Str;
                                     style="height: 180px; object-fit: cover;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $university->name }}</h5>
-                                    <p class="card-text small text-muted mb-1">
+                                    <p class="card-text small text-muted mb-1 d-none d-md-block">
                                         <i class="fas fa-map-marker-alt me-1"></i> {{ $university->city->name ?? 'N/A' }}
                                     </p>
                                     <p class="card-text small text-muted">
                                         <i class="fas fa-award me-1"></i> QS Rank: {{ $university->qs_rank ?? 'N/A' }}
                                     </p>
-                                    <p class="card-text">{{ Str::limit(strip_tags($university->description), 80) }}</p>
+                                    <p class="card-text d-none d-md-block">{{ Str::limit(strip_tags($university->description), 80) }}</p>
                                 </div>
                                 <div class="card-footer bg-transparent border-0 text-end">
                                     <span class="badge bg-primary-subtle text-primary-emphasis rounded-pill px-3 py-2">

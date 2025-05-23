@@ -24,13 +24,13 @@
                                     <p class="card-text small text-muted mb-1">
                                         <i class="fas fa-university me-1"></i> {{ $program->university->name }}
                                     </p>
-                                    <p class="card-text small text-muted mb-1">
+                                    <p class="card-text small text-muted mb-1 d-none d-md-block">
                                         <i class="fas fa-graduation-cap me-1"></i> {{ $program->degree->name ?? 'N/A' }}
                                     </p>
                                     <p class="card-text small text-muted mb-1">
                                         <i class="fas fa-language me-1"></i> {{ $program->language }}
                                     </p>
-                                    <p class="card-text small text-muted mb-1">
+                                    <p class="card-text small text-muted mb-1 d-none d-md-block">
                                         <i class="fas fa-clock me-1"></i> {{ $program->duration }}
                                     </p>
                                     <p class="card-text small text-muted">
@@ -53,3 +53,5 @@
         @endif
     </div>
 </section>
+
+
