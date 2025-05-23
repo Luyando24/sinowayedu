@@ -1,3 +1,7 @@
+@php
+use Illuminate\Support\Facades\Route;
+@endphp
+
 @extends('layouts.app')
 
 @section('title', 'Login')
@@ -77,3 +81,4 @@
     </div>
 </section>
 @endsection
+

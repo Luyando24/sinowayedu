@@ -8,6 +8,7 @@
     
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         @foreach($cities as $city)
+        <a href="{{ route('city.view', $city->id) }}" class="text-decoration-none text-dark">
             <div class="col">
                 <div class="card shadow-lg rounded-4 border-0">
                     <img 
@@ -20,6 +21,7 @@
                     </div>
                 </div>
             </div>
+        </a>
         @endforeach
     </div>
 

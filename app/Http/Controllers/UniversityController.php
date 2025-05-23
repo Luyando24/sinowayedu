@@ -13,7 +13,7 @@ class UniversityController extends Controller
 {
     public function universities(Request $request)
 {
-    $query = University::with(['city',]);
+    $query = University::with(['city']);
 
     if ($request->filled('name')) {
         $query->where('name', 'like', '%' . $request->name . '%');
@@ -21,6 +21,11 @@ class UniversityController extends Controller
 
     if ($request->filled('city_id')) {
         $query->where('city_id', $request->city_id);
+    }
+
+    // Limit results for non-subscribed users
+    if (!auth()->check() || !auth()->user()->subscribed()) {
+        $query->limit(10);
     }
 
     $universities = $query->paginate(12);
@@ -31,3 +36,5 @@ class UniversityController extends Controller
     ]);
 }
 }
+
+

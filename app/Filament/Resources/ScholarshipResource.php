@@ -27,12 +27,6 @@ class ScholarshipResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('university_id')
-                    ->relationship('university', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->label('University')
-                    ->required(),
                Forms\Components\Select::make('name')
                     ->options([
                         'Chinese Government Scholarship' => 'Chinese Government Scholarship',
@@ -48,14 +42,11 @@ class ScholarshipResource extends Resource
                         'Class B: 50% tuition fee reduction' => 'Class B: 50% tuition fee reduction',
                         'Class C: Free accommodation fee only' => 'Class C: Free accommodation fee only',
                     ])
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
                 Forms\Components\Select::make('type')
                     ->options([
-                        'University scholarship' => 'University scholarship',
-                        'Local Government scholarship' => 'Local Government scholarship',
-                        'Chinese Government scholarship' => 'Chinese Government scholarship',
-                        'International Chinese Language Teacher scholarship' => 'International Chinese Language Teacher scholarship',
+                        'Full' => 'Full',
+                        'Partial' => 'Partial',
                     ])
                     ->label('Type of scholarship')
                     ->required(),
@@ -72,9 +63,6 @@ class ScholarshipResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('university.name')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Scholarship name')
                     ->searchable(),

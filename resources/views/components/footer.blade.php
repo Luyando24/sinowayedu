@@ -44,7 +44,7 @@
 
         <!-- Copyright -->
         <div class="text-center pt-4 mt-4 border-top border-secondary">
-            <p class="mb-0">&copy; 2025 Sinoway Education. All rights reserved. Web design by <a class="secondary-color" href="https://spaceminds.agency/">Spaceminds</a> </p>
+            <p class="mb-0">&copy; 2025 Sinoway Education. All rights reserved. Web design by <a class="secondary-color" target="blank" href="https://spaceminds.agency/">Spaceminds</a> </p>
         </div>
     </div>
 </footer>

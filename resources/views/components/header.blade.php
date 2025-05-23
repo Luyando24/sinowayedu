@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
-        <img src="{{ url('images/logo.PNG') }}" alt="Logo">
+        <img src="{{ url('images/logo.png') }}" alt="Logo">
         <span class="ms-2">Sinowayedu</span>
       </a>      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,14 +17,26 @@
           <li class="nav-item">
             <a class="nav-link" href="{{url('/why-us')}}">Why Us</a>
           </li>
+          @if(auth()->check())
           <li class="nav-item">
             <a class="nav-link" href="{{url('/programs')}}">Programs</a>
           </li>
+          @else
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/register')}}">Programs</a>
+          </li>
+          @endif
           <li class="nav-item">
             <a class="nav-link" href="{{url('/universities')}}">Universities</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('about')}}">About</a>
+            <a class="nav-link" href="{{url('/careers')}}">Career Opportunities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/news')}}">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('about')}}">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('contact-us')}}">Contact</a>

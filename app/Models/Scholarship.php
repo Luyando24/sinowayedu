@@ -8,7 +8,6 @@ class Scholarship extends Model
 {
     protected $fillable = [
         'name',
-        'university_id',
         'coverage',
         'type',
         'notice',

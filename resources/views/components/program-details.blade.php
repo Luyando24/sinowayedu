@@ -76,7 +76,7 @@
 
                         <tr>
                             <th>Scholarship</th>
-                            <td>{{ $program->scholarship->name ?? 'None' }} (ID: {{ $program->program->name ?? 'N/A' }})</td>
+                            <td>{{ $program->scholarship->name ?? 'None' }} (ID: {{ $program->scholarship->name ?? 'N/A' }})</td>
                         </tr>
 
                         <!-- Requirements -->

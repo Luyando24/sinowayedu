@@ -7,7 +7,12 @@
       <a href="{{url('why-us')}}" class="text-white text-decoration-none small">Why Us</a>
       <!--<a href="#" class="text-white text-decoration-none small">Scholarships</a>-->
       <a href="{{url('cities')}}" class="text-white text-decoration-none small">Cities</a>
+      <a href="{{url('careers')}}" class="text-white text-decoration-none small">Career Opportunities</a>
+      @if(auth()->check())
       <a href="{{ url('programs') }}" class="text-white text-decoration-none fw-semibold small">Programs</a>
+      @else
+      <a href="{{ url('membership-notice') }}" class="text-white text-decoration-none small">Programs</a>
+      @endif
     </div>
 
     <!-- Right: Email (desktop only) + Logout -->

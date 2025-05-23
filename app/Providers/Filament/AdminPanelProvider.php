@@ -28,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandLogo(asset('images/logo.png'))
+            ->favicon(asset('images/favicon.png'))
             ->colors([
                 'gray' => Color::Gray,
                 'info' => Color::Blue,
@@ -42,7 +43,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+               
             ])
             ->middleware([
                 EncryptCookies::class,

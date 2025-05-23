@@ -48,6 +48,19 @@
         </div>
     </form>
 
+    {{-- Subscription Notice for Limited Results --}}
+    @if(!auth()->check() || !auth()->user()->subscribed())
+    <div class="alert alert-info mb-4" style="background-color: #3EA2A4; color: white; border: none;">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-info-circle me-2"></i>
+            <div>
+                <strong>Limited Access:</strong> You're viewing 10 out of {{ $programs->total() }} available programs. 
+                <a href="/payment-instructions" class="alert-link" style="color: #FFDD02;">Subscribe now</a> for full access.
+            </div>
+        </div>
+    </div>
+    @endif
+
     {{-- Program Table --}}
     <div class="table-responsive">
         <table class="table table-striped table-hover align-middle">
@@ -94,6 +107,8 @@
     </div>
 
     <div class="d-flex justify-content-center mt-4">
-        {{ $programs->withQueryString()->links() }}
+        @if(auth()->check() && auth()->user()->subscribed())
+            {{ $programs->withQueryString()->links() }}
+        @endif
     </div>
 </section>

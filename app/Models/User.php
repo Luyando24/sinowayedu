@@ -32,6 +32,8 @@ class User extends Authenticatable implements FilamentUser
         'country',
         'city',
         'phone',
+        'subscription_status',
+        'subscription_ends_at',
     ];
 
     /**
@@ -65,6 +67,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'subscription_ends_at' => 'datetime',
         ];
     }
 
@@ -75,4 +78,15 @@ class User extends Authenticatable implements FilamentUser
     {
         return str_ends_with($this->email, '@sinowayedu.com');
     }
+
+    /**
+     * Determine if the user has an active subscription.
+     */
+    public function subscribed(): bool
+    {
+        return $this->subscription_status === 'active' || 
+               ($this->subscription_ends_at && $this->subscription_ends_at->isFuture());
+    }
 }
+
+

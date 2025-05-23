@@ -1,12 +1,11 @@
-<section class="container my-5">
-    <div class="row mb-4 align-items-center">
-        <div class="col">
-            <h4 class="mb-0 heading">Featured Universities</h4>
-        </div>
-        <div class="col-auto">
-            <h4 class="mb-0 heading"><a href="#" class="text-decoration-none heading">All</a></h4>
-        </div>
-    </div>
+@php
+use Illuminate\Support\Str;
+@endphp
+
+<section class="featured-universities py-5">
+    <div class="container">
+        <h2 class="section-title mb-4">Featured Universities</h2>
+        <p class="section-description mb-5">Discover top universities offering quality education and diverse programs.</p>
 
     <div class="row">
         @foreach($featuredUniversities as $university)

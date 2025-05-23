@@ -48,21 +48,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($university->programs as $program)
+                        @if(auth()->check())
+                            @foreach($university->programs as $program)
+                                <tr>
+                                    <td>{{ $program->name }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $program->degree->name ?? 'N/A' }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $program->language ?? 'N/A' }}</td>
+                                    <td class="d-none d-lg-table-cell">{{ $program->duration ?? 'N/A' }}</td>
+                                    <td class="d-none d-lg-table-cell">¥{{ number_format($program->tuition_fee) }}</td>
+                                    <td class="d-none d-lg-table-cell">
+                                        {{ $program->application_deadline ? \Carbon\Carbon::parse($program->application_deadline)->format('M d, Y') : 'N/A' }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('program', $program->id) }}" class="btn btn-sm btn-outline-primary">
+                                            View
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td>{{ $program->name }}</td>
-                                <td class="d-none d-md-table-cell">{{ $program->degree->name ?? 'N/A' }}</td>
-                                <td class="d-none d-md-table-cell">{{ $program->language ?? 'N/A' }}</td>
-                                <td class="d-none d-lg-table-cell">{{ $program->duration ?? 'N/A' }}</td>
-                                <td class="d-none d-lg-table-cell">¥{{ number_format($program->tuition_fee) }}</td>
-                                <td class="d-none d-lg-table-cell">{{ \Carbon\Carbon::parse($program->application_deadline)->format('M d, Y') }}</td>
-                                <td>
-                                    <a href="{{ route('program', $program->id) }}" class="btn btn-sm btn-outline-primary">
-                                        View
-                                    </a>
+                                <td colspan="7" class="text-center">
+                                    <p class="mb-2">Please <a href="{{ route('membership-application') }}">register</a> or <a href="{{ route('login') }}">login</a> to view available programs.</p>
+                                    <a href="{{ route('membership-application') }}" class="btn btn-primary btn-sm">Register Now</a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

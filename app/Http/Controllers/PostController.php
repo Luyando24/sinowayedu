@@ -14,9 +14,25 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show(Post $post)
+    public function show($slug)
     {
-        return view('posts.show', compact('post'));
+        $post = Post::where('slug', $slug)->firstOrFail();
+        
+        // Get related posts (posts in the same category or with similar tags)
+        $relatedPosts = Post::where('id', '!=', $post->id)
+            ->when($post->category, function($query) use ($post) {
+                return $query->where('category', $post->category);
+            })
+            ->latest()
+            ->take(3)
+            ->get();
+        
+        // Get next post for navigation
+        $nextPost = Post::where('created_at', '>', $post->created_at)
+            ->orderBy('created_at', 'asc')
+            ->first();
+        
+        return view('posts.show', compact('post', 'relatedPosts', 'nextPost'));
     }
 
     public function create()
@@ -45,4 +61,18 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
+
+    // display news page
+    public function newsPage()
+    {
+        $posts = Post::where('is_published', true)->latest()->paginate(10);
+        return view('news', compact('posts'));
+    }
+
+    // display post details
+    public function postDetails(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
 }
+

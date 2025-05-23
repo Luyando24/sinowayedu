@@ -1,3 +1,7 @@
+@php
+use Illuminate\Support\Str;
+@endphp
+
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row mb-4 align-items-center">
@@ -9,9 +13,9 @@
             </div>
         </div></div>
     <div class="container text-center">
-        
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach ($cities as $city)
+            <a href="{{ route('city.view', $city->id) }}" class="text-decoration-none text-dark">
                 <div class="col">
                     <div class="card shadow-sm border-0 rounded-4">
                         <img src="{{ asset('storage/' . $city->image) }}" class="card-img-top" alt="{{ $city->name }}">
@@ -21,6 +25,7 @@
                         </div>
                     </div>
                 </div>
+            </a>
             @endforeach
         </div>
     </div>

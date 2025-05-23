@@ -31,12 +31,17 @@ class CityResource extends Resource
                     ->relationship('province', 'name')
                     ->label('Province')
                     ->required(),
-                    Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('name')
                     ->label('City name')
                         ->required()
                         ->maxLength(255),
                     //city image
-                    Forms\Components\FileUpload::make('image')
+                Forms\Components\Textarea::make('description')
+                    ->label('Description')
+                    ->required()
+                    ->maxLength(65535),
+                    
+                Forms\Components\FileUpload::make('image')
                     ->image()
                     ->maxSize(5024)
                     ->required()

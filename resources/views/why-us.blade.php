@@ -42,4 +42,36 @@
     </div>
 
 </section>
+
+<!-- Our Partners Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="mb-4 text-center heading">Our Partners</h2>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 justify-content-center">
+            @php
+                $partners = [
+                    ['name' => 'GlobalEdu Alliance', 'image' => 'feature1.webp'],
+                    ['name' => 'StudyWorld Co.', 'image' => 'feature2.png'],
+                    ['name' => 'BrightFutures Ltd.', 'image' => 'feature3.webp'],
+                    ['name' => 'EduBridge Partners', 'image' => 'feature1.webp'],
+                    ['name' => 'CareerLink Global', 'image' => 'feature2.png'],
+                    ['name' => 'NextGen Learning', 'image' => 'feature3.webp'],
+                ];
+            @endphp
+
+            @foreach ($partners as $partner)
+                <div class="col text-center">
+                    <div class="card shadow-sm border-0 rounded-4 h-100">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                            <img src="{{ asset('images/' . $partner['image']) }}" alt="{{ $partner['name'] }}" class="mb-3" style="width: 80px; height: 80px; object-fit: contain;">
+                            <h6 class="text-muted mb-0">{{ $partner['name'] }}</h6>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 @endsection
+
