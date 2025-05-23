@@ -24,6 +24,7 @@ use App\Models\City;
 // Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('lang/{lang}', [App\Http\Controllers\LanguageController::class, 'switchLang'])->name('language.switch');
 
 Route::get('/membership-notice', [ProgramController::class, 'membershipNotice'])->name('membership-notice');
 Route::get('/membership-application', [ProgramController::class, 'membershipApplication'])->name('membership-application');
@@ -91,6 +92,7 @@ Route::get('/careers', [CareerController::class, 'careerPage'])->name('careers')
 Route::get('/career/{career}', [CareerController::class, 'careerDetails'])->name('job.show');
 //submit job application
 Route::post('/job/{career:slug}/apply', [JobApplicationController::class, 'store'])->name('job.apply');
+
 
 
 

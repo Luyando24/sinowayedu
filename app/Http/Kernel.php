@@ -27,5 +27,13 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'subscribed' => \App\Http\Middleware\EnsureUserIsSubscribed::class,
     ];
+
+    protected $middlewareGroups = [
+        'web' => [
+            // ... other middleware
+            \App\Http\Middleware\SetLocale::class,
+        ],
+    ];
 }
+
 
