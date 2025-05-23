@@ -51,4 +51,12 @@
   </div>
 </footer>
 
+<style>
+@media (max-width: 767.98px) {
+    footer {
+        padding-bottom: 80px; /* Add extra padding at the bottom on mobile to account for the nav bar */
+    }
+}
+</style>
+
 

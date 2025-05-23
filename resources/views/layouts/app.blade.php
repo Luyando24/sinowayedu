@@ -11,6 +11,9 @@
     <!-- Flag Icons CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Optional: Google Fonts -->
     <link href="https://fonts.loli.net/css2?family=Roboto&display=swap" rel="stylesheet">
     
@@ -27,14 +30,14 @@
     </main>
 
     @include('components.footer')
+    @include('components.mobile-nav')
 
     <!-- Local Bootstrap Bundle JS -->
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Your custom JS (optional) -->
     @vite('resources/js/app.js')
     
 </body>
 </html>
-
 
