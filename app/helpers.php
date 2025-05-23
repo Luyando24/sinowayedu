@@ -11,15 +11,7 @@ if (!function_exists('lang')) {
      */
     function lang($key = null, $replace = [], $locale = null)
     {
-        if (is_null($key)) {
-            return $key;
-        }
-        
         return __('messages.' . $key, $replace, $locale);
     }
 }
-
-
-
-
 

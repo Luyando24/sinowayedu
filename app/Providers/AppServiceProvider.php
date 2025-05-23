@@ -4,8 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
     {
         // Set the application locale based on session
         $this->setLocaleFromSession();
+        
+        // Share auth user with all views
+        View::composer('*', function ($view) {
+            $view->with('authUser', Auth::user());
+        });
     }
 
     /**
@@ -34,21 +42,16 @@ class AppServiceProvider extends ServiceProvider
         // Get locale from session
         $sessionLocale = Session::get('locale', 'en'); // Default to 'en' if not set
         
-        // Log for debugging
-        Log::info('AppServiceProvider - Session locale: ' . ($sessionLocale ?? 'null'));
-        
         // If session has locale and it's valid, set it
         if ($sessionLocale && in_array($sessionLocale, ['en', 'ru', 'fr'])) {
             App::setLocale($sessionLocale);
-            Log::info('AppServiceProvider - Setting locale to: ' . $sessionLocale);
         } else {
             // Set default locale to English
             App::setLocale('en');
-            Log::info('AppServiceProvider - Setting default locale to: en');
         }
-        
-        Log::info('AppServiceProvider - App locale is now: ' . App::getLocale());
     }
 }
+
+
 
 
