@@ -40,14 +40,15 @@ class ListPrograms extends ListRecords
                         ]),
                 ])
                 ->action(function (array $data): void {
-                    Excel::import(new ProgramsImport, $data['file']);
+                    $file = storage_path('app/public/' . $data['file']);
+                    Excel::import(new ProgramsImport, $file);
                     Notification::make()
                         ->title('Programs imported successfully!')
                         ->success()
                         ->send();
                 })
                 ->modalHeading('Import Programs')
-                ->modalButton('Import Now')
+                ->modalSubmitActionLabel('Import Now')
                 ->color('primary'),
         ];
     }
