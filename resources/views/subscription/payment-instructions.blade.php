@@ -72,7 +72,7 @@
                                             </p>
                                         </div>
                                         <div class="col-md-4 text-center">
-                                            <img src="{{ asset('images/wechat-qr.jpg') }}" alt="WeChat QR Code" class="img-fluid" style="max-width: 120px;">
+                                            <img src="{{ asset('images/wechat.png') }}" alt="WeChat QR Code" class="img-fluid" style="max-width: 120px;">
                                         </div>
                                     </div>
                                 </div>

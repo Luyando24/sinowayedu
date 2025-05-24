@@ -67,7 +67,7 @@
         <div class="d-flex align-items-center">
             <i class="fas fa-info-circle me-2"></i>
             <div>
-                <strong>Note:</strong> Normal users can view all programs but cannot access university details. 
+                <strong>Note:</strong> You're signed in as a student. Please contact us to apply. Are you an agent? <a href="{{ url('payment-instructions') }}" class="text-primary">Upgrade</a> your account to see university info. 
                 @if(!auth()->check())
                 <a href="{{ route('register') }}" class="alert-link">Register</a> or 
                 <a href="{{ route('login') }}" class="alert-link">login</a> to continue.
@@ -83,7 +83,11 @@
             <thead class="table-dark" style="background-color: #3EA2A4; color: #FFDD02;">
                 <tr>
                     <th>Program</th>
+                    @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                    <th class="d-none d-md-table-cell"></th>
+                    @else
                     <th class="d-none d-md-table-cell">University</th>
+                    @endif
                     <th class="d-none d-md-table-cell">Language</th>
                     <th class="d-none d-lg-table-cell">Duration</th>
                     <th class="d-none d-lg-table-cell">Tuition Fee</th>
@@ -100,7 +104,13 @@
                                 <small class="text-muted d-block">({{ $item->degree->name }})</small>
                             @endif
                         </td>
-                        <td class="d-none d-md-table-cell">{{ $item->university->name }}</td>
+                        <td class="d-none d-md-table-cell">
+                            @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                            <!--<span class="text-muted">Subscribe to view</span>-->
+                            @else
+                                {{ $item->university->name }}
+                            @endif
+                        </td>
                         <td class="d-none d-md-table-cell">{{ $item->language }}</td>
                         <td class="d-none d-lg-table-cell">{{ $item->duration }}</td>
                         <td class="d-none d-lg-table-cell">¥{{ number_format($item->tuition_fee) }}</td>

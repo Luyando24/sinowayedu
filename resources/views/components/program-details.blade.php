@@ -21,8 +21,18 @@
                         </tr>
 
                         <tr>
-                            <th>University</th>
-                            <td>{{ $program->university->name ?? 'N/A' }}</td>
+                            @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                                    
+                                @else
+                                <th>Program ID</th>
+                                @endif
+                            <td>
+                                @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
+                                    
+                                @else
+                                {{ $program->university->name ?? 'N/A' }}
+                                @endif
+                            </td>
                         </tr>
 
                         <tr>
