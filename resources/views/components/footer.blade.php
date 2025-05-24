@@ -42,7 +42,8 @@
             </div>
             <div class="col-md-6 text-md-end">
                 <a href="{{ url('privacy-policy') }}" class="text-white text-decoration-none me-3">{{ __('messages.privacy_policy') }}</a>
-                <a href="{{ url('terms-of-service') }}" class="text-white text-decoration-none">{{ __('messages.terms_of_service') }}</a>
+                <a href="{{ url('terms-of-service') }}" class="text-white text-decoration-none me-3">{{ __('messages.terms_of_service') }}</a>
+                <a href="https://spaceminds.agency/" target="_blank" class="text-white text-decoration-none highlight-link">Web design by Spaceminds</a>
             </div>
         </div>
     </div>
@@ -138,5 +139,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<style>
+.highlight-link {
+    color: #3EA2A4 !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.highlight-link:hover {
+    color: #fff !important;
+    text-decoration: underline !important;
+}
+</style>
 
 
