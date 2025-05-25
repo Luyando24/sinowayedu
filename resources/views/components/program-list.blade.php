@@ -3,10 +3,11 @@
 
     {{-- Filters --}}
     <form method="GET" action="{{ route('programs.index') }}" class="mb-4">
-        <div class="row g-3 align-items-end">
-            <div class="col-md-3">
+        <div class="row g-3"> <!-- Removed align-items-end for better mobile spacing -->
+            <!-- City Filter -->
+            <div class="col-12 col-md-3"> <!-- Changed to full width on mobile -->
                 <label for="city" class="form-label">City</label>
-                <select name="city_id" id="city" class="form-select">
+                <select name="city_id" id="city" class="form-select form-select-sm"> <!-- Added form-select-sm for mobile -->
                     <option value="">All Cities</option>
                     @foreach($cities as $city)
                         <option value="{{ $city->id }}" {{ request('city_id') == $city->id ? 'selected' : '' }}>
@@ -16,9 +17,10 @@
                 </select>
             </div>
 
-            <div class="col-md-3">
+            <!-- University Filter -->
+            <div class="col-12 col-md-3">
                 <label for="university" class="form-label">University</label>
-                <select name="university_id" id="university" class="form-select">
+                <select name="university_id" id="university" class="form-select form-select-sm">
                     <option value="">All Universities</option>
                     @foreach($universities as $university)
                         <option value="{{ $university->id }}" {{ request('university_id') == $university->id ? 'selected' : '' }}>
@@ -28,22 +30,25 @@
                 </select>
             </div>
 
-            <div class="col-md-2">
+            <!-- Language Filter -->
+            <div class="col-6 col-md-2"> <!-- Half width on mobile -->
                 <label for="language" class="form-label">Language</label>
-                <select name="language" id="language" class="form-select">
+                <select name="language" id="language" class="form-select form-select-sm">
                     <option value="">All Languages</option>
                     <option value="English" {{ request('language') == 'English' ? 'selected' : '' }}>English</option>
                     <option value="Chinese" {{ request('language') == 'Chinese' ? 'selected' : '' }}>Chinese</option>
                 </select>
             </div>
 
-            <div class="col-md-2">
+            <!-- Search Input -->
+            <div class="col-6 col-md-2"> <!-- Half width on mobile -->
                 <label for="search" class="form-label">Search</label>
-                <input type="text" name="search" id="search" class="form-control" placeholder="Program name..." value="{{ request('search') }}">
+                <input type="text" name="search" id="search" class="form-control form-control-sm" placeholder="Program name..." value="{{ request('search') }}">
             </div>
 
-            <div class="col-md-2 d-grid">
-                <button type="submit" class="btn" style="background-color: #3EA2A4; color: #FFDD02;">Filter</button>
+            <!-- Filter Button -->
+            <div class="col-12 col-md-2 d-grid mt-3 mt-md-0"> <!-- Full width button on mobile with extra top margin -->
+                <button type="submit" class="btn btn-sm" style="background-color: #3EA2A4; color: #FFDD02;">Filter</button>
             </div>
         </div>
     </form>

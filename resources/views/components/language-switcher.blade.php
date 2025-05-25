@@ -1,4 +1,4 @@
-<div class="dropdown">
+<div class="dropdown" style="z-index: 1100;"> <!-- Added z-index -->
   <button class="btn btn-sm btn-outline-light dropdown-toggle py-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.8rem;">
     @if(app()->getLocale() == 'en')
       <span class="fi fi-gb"></span> {{ __('messages.english') }}
