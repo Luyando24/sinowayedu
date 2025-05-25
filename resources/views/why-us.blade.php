@@ -3,6 +3,23 @@
 @section('title', 'Why Choose Us')
 
 @section('content')
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-4">About Us</h1>
+            <p class="lead">SinoWay Education is dedicated to helping international students navigate their educational journey in China.</p>
+            
+            <h2 class="mt-5 mb-3">Our Mission</h2>
+            <p>Our mission is to provide accessible educational opportunities and guidance to international students, helping them navigate their study abroad journey with ease.</p>
+            
+            <h2 class="mt-5 mb-3">Our Vision</h2>
+            <p>To be the leading educational consultancy connecting international students with quality education in China.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="{{ asset('images/mission.webp') }}" class="img-fluid rounded-4 shadow-sm" alt="Our Mission">
+        </div>
+    </div>
+</div>
 <section class="container my-5">
     <h2 class="mb-4 text-center heading">Why Choose Us</h2>
 

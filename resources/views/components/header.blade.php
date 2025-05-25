@@ -33,7 +33,6 @@
           <li class="nav-item">
             <a class="nav-link {{ request()->is('news*') ? 'active' : '' }}" href="{{url('/news')}}">{{ lang('news') }}</a>
           </li>
-            <a class="nav-link {{ request()->is('about*') ? 'active' : '' }}" href="{{url('about')}}">{{ lang('about') }}</a>
           <li class="nav-item">
             <a class="nav-link {{ request()->is('contact-us*') ? 'active' : '' }}" href="{{url('contact-us')}}">{{ lang('contact') }}</a>
           </li>

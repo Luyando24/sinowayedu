@@ -1,5 +1,5 @@
 <section class="container my-5">
-    <h2 class="mb-4 heading">Available Programs</h2>
+    <h2 class="mb-4 heading text-center">Featured Programs</h2>
 
     {{-- Filters --}}
     <form method="GET" action="{{ route('programs.index') }}" class="mb-4">
@@ -48,6 +48,62 @@
         </div>
     </form>
 
+    {{-- Access Notices --}}
+   {{-- @include('components.program-access-notices')--}}
+
+    {{-- Program Categories --}}
+    <div class="row">
+        <div class="col-12">
+            <nav>
+                <div class="nav nav-tabs" id="program-tabs" role="tablist">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#english" type="button">Top 10 English Taught</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bachelor" type="button">Top 10 Bachelor's</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#master" type="button">Top 10 Master's</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#phd" type="button">Top 10 PhD</button>
+                </div>
+            </nav>
+
+            <div class="tab-content pt-4" id="program-content">
+                {{-- English Taught Programs Tab --}}
+                <div class="tab-pane fade show active" id="english" role="tabpanel">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        @foreach($englishPrograms as $program)
+                            @include('components.program-card')
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Bachelor's Programs Tab --}}
+                <div class="tab-pane fade" id="bachelor" role="tabpanel">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        @foreach($bachelorPrograms as $program)
+                            @include('components.program-card')
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Master's Programs Tab --}}
+                <div class="tab-pane fade" id="master" role="tabpanel">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        @foreach($masterPrograms as $program)
+                            @include('components.program-card')
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- PhD Programs Tab --}}
+                <div class="tab-pane fade" id="phd" role="tabpanel">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        @foreach($phdPrograms as $program)
+                            @include('components.program-card')
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     {{-- Subscription Notice for Limited Results --}}
     @if(auth()->check() && auth()->user()->usertype === 'partner' && !auth()->user()->subscribed())
     <div class="alert alert-info mb-4" style="background-color: #3EA2A4; color: white; border: none;">
@@ -62,6 +118,9 @@
     @endif
 
     {{-- University Access Notice for Normal Users --}}
+    <section class="container my-5">
+    <h2 class="mb-4 heading text-center">All Programs</h2>
+    {{-- Subscription Notice for Normal Users --}}
     @if(!auth()->check() || (auth()->check() && auth()->user()->usertype === 'normal'))
     <div class="alert alert-warning mb-4">
         <div class="d-flex align-items-center">
@@ -96,7 +155,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($programs as $item)
+                @forelse($allPrograms as $item)
                     <tr>
                         <td>
                             {{ $item->name }}
@@ -138,4 +197,4 @@
         @endif
     </div>
 </section>
-
+</section>
